@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_margin="1dp"
+    android:padding="2dp"
+    android:layout_height="match_parent">
+<ImageView
+    android:id="@+id/imageView"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:scaleType = "fitXY"
+    android:src="@drawable/ic_baseline_search_24" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text = "Name"
+        android:layout_below="@+id/imageView"
+        android:id="@+id/imageName"
+        android:layout_centerHorizontal="true"/>.
+
+</RelativeLayout>
