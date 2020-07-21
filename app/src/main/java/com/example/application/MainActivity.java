@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // images slide displaydispaly
+        // images slide display
         int flipImages [] = {R.drawable.s1,R.drawable.s2,R.drawable.s3};
         v_flipper = findViewById(R.id.v_fliper);
         gridView = findViewById(R.id.gridView);
