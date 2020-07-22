@@ -1,10 +1,13 @@
 package com.example.application;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -40,8 +43,25 @@ public class MainActivity extends AppCompatActivity {
         gridView.setAdapter(customAdapter);
 
         //bottom navigation
-        bottomNav = findViewById(R.id.bottom_navigation);
-
+        bottomNav = findViewById(R.id.bottom_navigation_main);
+        bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.nav_home:
+                        break;
+                    case R.id.nav_cinema:
+                        Intent intent = new Intent(MainActivity.this,MapsActivity.class);
+                        startActivity(intent);
+                        break;
+                    case R.id.nav_actor:
+                        Intent intent2 = new Intent(MainActivity.this,Actor.class);
+                        startActivity(intent2);
+                        break;
+                }
+                return false;
+            }
+        });
     }
 
     public void flipImages(int images){
