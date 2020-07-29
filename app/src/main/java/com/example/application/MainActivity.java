@@ -58,6 +58,10 @@ public class MainActivity extends AppCompatActivity {
                         Intent intent2 = new Intent(MainActivity.this,Actor.class);
                         startActivity(intent2);
                         break;
+                    case R.id.nav_search:
+                        Intent intent3 = new Intent(MainActivity.this,SearchMainActivity.class);
+                        startActivity(intent3);
+                        break;
                 }
                 return false;
             }

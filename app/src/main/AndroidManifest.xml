@@ -15,7 +15,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ActorPage"></activity>
+        <activity android:name=".SearchDataActivity"></activity>
+        <activity android:name=".MovieDetailActivity" />
+
+<!--        <meta-data-->
+<!--            android:name="com.google.android.actions"-->
+<!--            android:resource="@xml/actions" />-->
+
+        <activity android:name=".SearchMainActivity" />
+        <activity android:name=".ActorPage" />
         <activity android:name=".Actor" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
