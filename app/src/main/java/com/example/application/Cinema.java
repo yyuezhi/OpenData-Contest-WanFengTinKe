@@ -39,14 +39,14 @@ public class Cinema extends AppCompatActivity {
                         Intent intent = new Intent(Cinema.this,MainActivity.class);
                         startActivity(intent);
                         break;
-                    case R.id.nav_cinema:
-                        Intent intent3 = new Intent(Cinema.this,MapsActivity.class);
-                        startActivity(intent3);
-                        break;
-                    case R.id.nav_actor:
-                        Intent intent2 = new Intent(Cinema.this,Actor.class);
-                        startActivity(intent2);
-                        break;
+//                    case R.id.nav_cinema:
+//                        Intent intent3 = new Intent(Cinema.this,MapsActivity.class);
+//                        startActivity(intent3);
+//                        break;
+//                    case R.id.nav_actor:
+//                        Intent intent2 = new Intent(Cinema.this,Actor.class);
+//                        startActivity(intent2);
+//                        break;
                 }
                 return false;
             }

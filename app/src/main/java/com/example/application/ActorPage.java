@@ -23,26 +23,26 @@ public class ActorPage extends AppCompatActivity {
         title.setText("This is individual actor page");
 
         //bottom navigation
-        bottomNav = findViewById(R.id.bottom_navigation_actorPage);
-        bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.nav_home:
-                        Intent intent = new Intent(ActorPage.this, MainActivity.class);
-                        startActivity(intent);
-                        break;
-                    case R.id.nav_cinema:
-                        Intent intent2 = new Intent(ActorPage.this, MapsActivity.class);
-                        startActivity(intent2);
-                        break;
-                    case R.id.nav_actor:
-                        Intent intent3 = new Intent(ActorPage.this, Actor.class);
-                        startActivity(intent3);
-                        break;
-                }
-                return false;
-            }
-        });
+//        bottomNav = findViewById(R.id.bottom_navigation_actorPage);
+//        bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//                switch (item.getItemId()) {
+////                    case R.id.nav_home:
+////                        Intent intent = new Intent(ActorPage.this, MainActivity.class);
+////                        startActivity(intent);
+////                        break;
+////                    case R.id.nav_cinema:
+////                        Intent intent2 = new Intent(ActorPage.this, MapsActivity.class);
+////                        startActivity(intent2);
+////                        break;
+////                    case R.id.nav_actor:
+////                        Intent intent3 = new Intent(ActorPage.this, Actor.class);
+////                        startActivity(intent3);
+////                        break;
+//                }
+//                return false;
+//            }
+//        });
     }
 }

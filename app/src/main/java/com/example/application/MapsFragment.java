@@ -1,13 +1,18 @@
 package com.example.application;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
@@ -22,7 +27,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapsFragment extends Fragment implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     List<MapCinnemaItem> lstdata;
@@ -38,15 +43,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 //    };
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_maps);
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
-
-
 
         //for cinnema section display
         lstdata = new ArrayList<>();
@@ -56,43 +54,34 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         lstdata.add(new MapCinnemaItem(R.drawable.meiqi,"sdf","blur blur Again"));
         lstdata.add(new MapCinnemaItem(R.drawable.meiqi,"qwetar","blur blur Again"));
 
-        ListView listView = (ListView) findViewById(R.id.mapListView);
-        MapAdapter adapter = new MapAdapter(this,R.layout.cinnemaitem,lstdata);
+
+
+//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+//            @Override
+//            public void onItemClick (AdapterView<?> adapterView, View view,int position,long l){
+//                Intent intent = new Intent();
+//                intent.putExtra("Cinema Name",lstdata.get(position).cinnemaName);
+//                intent.putExtra("image",lstdata.get(position).resID);
+//                intent.setClass(MapsActivity.this,Cinema.class);
+//                startActivity(intent);
+//            }
+//        });
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             ViewGroup container, Bundle savedInstanceState) {
+
+        View rootView = inflater.inflate(R.layout.fragment_maps, container, false);
+
+        ListView listView = (ListView) rootView.findViewById(R.id.mapListView);
+        MapAdapter adapter = new MapAdapter(getActivity(),R.layout.cinnemaitem,lstdata);
         listView.setAdapter(adapter);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-            @Override
-            public void onItemClick (AdapterView<?> adapterView, View view,int position,long l){
-                Intent intent = new Intent();
-                intent.putExtra("Cinema Name",lstdata.get(position).cinnemaName);
-                intent.putExtra("image",lstdata.get(position).resID);
-                intent.setClass(MapsActivity.this,Cinema.class);
-                startActivity(intent);
-            }
-        });
-
-
-        //bottom navigation
-        bottomNav = findViewById(R.id.bottom_navigation_map);
-        bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.nav_home:
-                        Intent intent = new Intent(MapsActivity.this,MainActivity.class);
-                        startActivity(intent);
-                        break;
-                    case R.id.nav_cinema:
-                        break;
-                    case R.id.nav_actor:
-                        Intent intent2 = new Intent(MapsActivity.this,Actor.class);
-                        startActivity(intent2);
-                        break;
-                }
-                return false;
-            }
-        });
-
+        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        SupportMapFragment mapFragment = (SupportMapFragment)getChildFragmentManager().findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+        return rootView;
     }
 
     /**
