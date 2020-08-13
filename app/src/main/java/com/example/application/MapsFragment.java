@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
+import androidx.navigation.Navigation;
 
 import android.content.Context;
 import android.content.Intent;
@@ -54,18 +55,6 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
         lstdata.add(new MapCinnemaItem(R.drawable.meiqi,"sdf","blur blur Again"));
         lstdata.add(new MapCinnemaItem(R.drawable.meiqi,"qwetar","blur blur Again"));
 
-
-
-//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-//            @Override
-//            public void onItemClick (AdapterView<?> adapterView, View view,int position,long l){
-//                Intent intent = new Intent();
-//                intent.putExtra("Cinema Name",lstdata.get(position).cinnemaName);
-//                intent.putExtra("image",lstdata.get(position).resID);
-//                intent.setClass(MapsActivity.this,Cinema.class);
-//                startActivity(intent);
-//            }
-//        });
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -77,6 +66,13 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
         ListView listView = (ListView) rootView.findViewById(R.id.mapListView);
         MapAdapter adapter = new MapAdapter(getActivity(),R.layout.cinnemaitem,lstdata);
         listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick (AdapterView<?> adapterView, View view,int position,long l){
+                Navigation.findNavController(view).navigate(R.id.action_nav_cinema_to_nav_cinema_detail);
+            }
+        });
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment)getChildFragmentManager().findFragmentById(R.id.map);

@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.content.Intent;
 import android.os.Build;
@@ -35,16 +36,7 @@ public class ActorFragment extends Fragment {
         lstdata.add(new ActorItem(R.drawable.s4,"Charlie","blur blur Again"));
         lstdata.add(new ActorItem(R.drawable.s5,"CAT","blur blur Again"));
 
-//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-//            @Override
-//            public void onItemClick (AdapterView<?> adapterView, View view, int position, long l){
-//                Intent intent = new Intent();
-//                intent.putExtra("Actor Name",lstdata.get(position).actorName);
-//                intent.putExtra("image",lstdata.get(position).resID);
-//                intent.setClass(Actor.this,ActorPage.class);
-//                startActivity(intent);
-//            }
-//        });
+
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -55,7 +47,13 @@ public class ActorFragment extends Fragment {
 
         ListView lv = (ListView)rootView.findViewById(R.id.actor_list);
         lv.setAdapter(new ActorAdapter(getActivity(), R.layout.actoritem,lstdata));
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick (AdapterView<?> adapterView, View view, int position, long l){
 
+                Navigation.findNavController(view).navigate(R.id.action_nav_actor_to_nav_actorPage);
+            }
+        });
         return rootView;
     }
 

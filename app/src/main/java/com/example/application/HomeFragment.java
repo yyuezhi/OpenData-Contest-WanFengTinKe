@@ -25,16 +25,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 
 import android.widget.TextView;
 
 
-import com.example.application.MovieDetailActivity;
-import com.example.application.SearchDataActivity;
 import com.example.application.bean.still.StillData;
 import com.example.application.data.Constant;
-import com.example.application.GridViewAdapter;
 import com.example.application.util.JsonRead;
 import com.example.application.view.IconCenterEditText;
 import com.example.application.view.MyGridViewView;
@@ -103,6 +101,7 @@ public class HomeFragment extends Fragment implements OnBannerListener , Adapter
                              ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_home, container, false);
+
         banner = (Banner) root.findViewById(R.id.banner);
         try {
             initView(root);
@@ -203,8 +202,7 @@ public class HomeFragment extends Fragment implements OnBannerListener , Adapter
                 case R.id.listview:
                     Adapter adpter=parent.getAdapter();
                     String data = (String) adpter.getItem(position);
-                    searchData(data);
-
+                    searchData(data,view);
                     break;
                 case R.id.gridView:
                     gotoMovieDetail(listitem.get(position).getMovieName(),listitem.get(position).getImgPath(),listitem.get(position).getMovie());
@@ -242,9 +240,9 @@ public class HomeFragment extends Fragment implements OnBannerListener , Adapter
     }
 
     @Override
-    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+    public boolean onEditorAction(TextView v,int actionId, KeyEvent event) {
         if (actionId == EditorInfo.IME_ACTION_SEARCH){
-            searchData(searchView.getText().toString()+"");
+            searchData(searchView.getText().toString()+"",v);
             return true;
         }
         return false;
@@ -254,7 +252,7 @@ public class HomeFragment extends Fragment implements OnBannerListener , Adapter
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.search_button:
-                searchData(searchView.getText().toString()+"");
+                searchData(searchView.getText().toString()+"",v);
                 break;
 
         }
@@ -275,8 +273,6 @@ public class HomeFragment extends Fragment implements OnBannerListener , Adapter
         intent.putExtra("PATH",path);
         intent.putExtra("URL",url);
         getActivity().startActivity(intent);
-
-
     }
     private void getBannrt(){
         OkHttpClient client = new OkHttpClient();
@@ -328,12 +324,11 @@ public class HomeFragment extends Fragment implements OnBannerListener , Adapter
 
 
 
-    private void searchData(String data){
+    private void searchData(String data,View view){
         clearFocuse();
-        Intent intent = new Intent();
-        intent.setClass(getActivity(), SearchDataActivity.class);
-        intent.putExtra("DATA",data);
-        getActivity().startActivity(intent);
+        Bundle bundle = new Bundle();
+        bundle.putString("DATA", data);
+        Navigation.findNavController(view).navigate(R.id.action_nav_home_to_nav_search, bundle);
     }
 
     private void clearFocuse(){

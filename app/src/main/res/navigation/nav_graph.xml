@@ -9,16 +9,46 @@
         android:id="@+id/nav_home"
         android:name="com.example.application.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_nav_home_to_nav_search"
+            app:destination="@id/nav_search" />
+    </fragment>
     <fragment
         android:id="@+id/nav_actor"
         android:name="com.example.application.ActorFragment"
         android:label="fragment_actor"
-        tools:layout="@layout/fragment_actor"/>
+        tools:layout="@layout/fragment_actor">
+        <action
+            android:id="@+id/action_nav_actor_to_nav_actorPage"
+            app:destination="@id/nav_actorPage" />
+    </fragment>
+
     <fragment
         android:id="@+id/nav_cinema"
         android:name="com.example.application.MapsFragment"
         tools:layout="@layout/fragment_maps"
-        android:label="fragment_maps" />
+        android:label="fragment_maps" >
+        <action
+            android:id="@+id/action_nav_cinema_to_nav_cinema_detail"
+            app:destination="@id/nav_cinema_detail" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_actorPage"
+        android:name="com.example.application.ActorPageFragment"
+        android:label="fragment_actor_page"
+        tools:layout="@layout/fragment_actor_page"/>
+
+    <fragment
+        android:id="@+id/nav_cinema_detail"
+        android:name="com.example.application.CinemaFragment"
+        android:label="fragment_cinema_detail"
+        tools:layout="@layout/fragment_cinema"/>
+    <fragment
+        android:id="@+id/nav_search"
+        android:name="com.example.application.SearchDataFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search_data"/>
 
 </navigation>
