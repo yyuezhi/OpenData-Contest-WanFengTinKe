@@ -29,15 +29,13 @@
                 app:layout_constraintEnd_toStartOf="@+id/right"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="@+id/left"
-                app:layout_constraintTop_toTopOf="parent"
-                android:src="@drawable/meiqi"/>
+                app:layout_constraintTop_toTopOf="parent"/>
 
             <TextView
                 android:id="@+id/cinema_name"
                 android:layout_width="0dp"
                 android:layout_height="29dp"
                 android:gravity="center"
-                android:text="@string/meiqi_text"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 app:layout_constraintEnd_toStartOf="@+id/right"
                 app:layout_constraintStart_toStartOf="@+id/left"
@@ -60,7 +58,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:contentDescription="@null"
-                android:text="@string/intro_details"
                 app:layout_constraintEnd_toStartOf="@+id/right"
                 app:layout_constraintStart_toStartOf="@+id/left"
                 app:layout_constraintTop_toBottomOf="@+id/intro" />

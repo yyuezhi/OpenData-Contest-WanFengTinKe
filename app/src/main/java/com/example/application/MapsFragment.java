@@ -49,12 +49,15 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
 
         //for cinnema section display
         lstdata = new ArrayList<>();
-        lstdata.add(new MapCinnemaItem(R.drawable.meiqi,"meiqi","blur blur blur"));
-        lstdata.add(new MapCinnemaItem(R.drawable.meiqi,"meiqiAgain","blur blur Again"));
-        lstdata.add(new MapCinnemaItem(R.drawable.meiqi,"Data","blur blur Again"));
-        lstdata.add(new MapCinnemaItem(R.drawable.meiqi,"sdf","blur blur Again"));
-        lstdata.add(new MapCinnemaItem(R.drawable.meiqi,"qwetar","blur blur Again"));
-
+        lstdata.add(new MapCinnemaItem(R.drawable.meiqi,"上海大戏院","复兴中路1186号"));
+        lstdata.add(new MapCinnemaItem(R.drawable.meiqi,"上海音乐厅","延安东路523号"));
+        lstdata.add(new MapCinnemaItem(R.drawable.meiqi,"人民大舞台","九江路663号"));
+        lstdata.add(new MapCinnemaItem(R.drawable.meiqi,"兰心大戏院","茂名南路57号"));
+        lstdata.add(new MapCinnemaItem(R.drawable.meiqi,"大光明电影院","南京西路216号"));
+        lstdata.add(new MapCinnemaItem(R.drawable.meiqi,"新光影艺苑","复兴中路1186号"));
+        lstdata.add(new MapCinnemaItem(R.drawable.meiqi,"美琪大戏院","江宁路奉贤路口"));
+        lstdata.add(new MapCinnemaItem(R.drawable.meiqi,"长江剧场","黄河路35号"));
+        lstdata.add(new MapCinnemaItem(R.drawable.meiqi,"黄浦剧场","北京东路780号"));
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -70,7 +73,9 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick (AdapterView<?> adapterView, View view,int position,long l){
-                Navigation.findNavController(view).navigate(R.id.action_nav_cinema_to_nav_cinema_detail);
+                Bundle bundle = new Bundle();
+                bundle.putInt("CINEMA", position);
+                Navigation.findNavController(view).navigate(R.id.action_nav_cinema_to_nav_cinema_detail, bundle);
             }
         });
 
