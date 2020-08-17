@@ -112,6 +112,7 @@ public class SearchDataFragment extends Fragment implements   AdapterView.OnItem
 
     private void initListener(){
         listView.setOnItemClickListener(this);
+        gridView.setOnItemClickListener(this);
         searchView.setOnFocusChangeListener(this);
         searchView.addTextChangedListener(this);
         searchView.setOnEditorActionListener(this);
@@ -125,17 +126,25 @@ public class SearchDataFragment extends Fragment implements   AdapterView.OnItem
         Log.i("tag", ""+cs.toString());
     }
 
+    private void gotoMovieDetail(String name,String path,String url,View v){
+        Bundle bundle = new Bundle();
+        bundle.putString("NAME", name);
+        bundle.putString("IMAGE",path);
+        bundle.putString("URL",url);
+        Navigation.findNavController(v).navigate(R.id.action_nav_search_to_movie, bundle);
+    }
+
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         switch (parent.getId()){
-            case R.id.listview:
+            case R.id.listview_search:
                 Adapter adpter=parent.getAdapter();
                 String data = (String) adpter.getItem(position);
                 searchData(data,view);
                 break;
-//            case R.id.gridView:
-//                gotoMovieDetail(listitem.get(position).getMovieName(),listitem.get(position).getImgPath(),listitem.get(position).getMovie());
-//                break;
+            case R.id.gridView_search:
+                gotoMovieDetail(listitem.get(position).getMovieName(),listitem.get(position).getImgPath(),listitem.get(position).getMovie(),view);
+                break;
             default:
                 break;
         }

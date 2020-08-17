@@ -13,7 +13,11 @@
         <action
             android:id="@+id/action_nav_home_to_nav_search"
             app:destination="@id/nav_search" />
+        <action
+            android:id="@+id/action_nav_home_to_movie"
+            app:destination="@id/movie" />
     </fragment>
+
     <fragment
         android:id="@+id/nav_actor"
         android:name="com.example.application.ActorFragment"
@@ -49,6 +53,15 @@
         android:id="@+id/nav_search"
         android:name="com.example.application.SearchDataFragment"
         android:label="fragment_search"
-        tools:layout="@layout/fragment_search_data"/>
+        tools:layout="@layout/fragment_search_data">
+        <action
+            android:id="@+id/action_nav_search_to_movie"
+            app:destination="@id/movie" />
+    </fragment>
+    <fragment
+        android:id="@+id/movie"
+        android:name="com.example.application.Movie"
+        tools:layout="@layout/fragment_movie"
+        android:label="Movie" />
 
 </navigation>

@@ -57,9 +57,6 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class HomeFragment extends Fragment implements OnBannerListener , AdapterView.OnItemClickListener , View.OnFocusChangeListener ,TextWatcher, TextView.OnEditorActionListener , View.OnClickListener {
-
-
-
     private Banner banner;
     ListView listView;
     private ImageView search_button;
@@ -187,9 +184,8 @@ public class HomeFragment extends Fragment implements OnBannerListener , Adapter
     //轮播图的监听方法
     @Override
     public void OnBannerClick(int position) {
-        gotoMovieDetail(bannerItem.get(position).getMovieName(),bannerItem.get(position).getImgPath(),bannerItem.get(position).getMovie());
+        gotoMovieDetail(bannerItem.get(position).getMovieName(),bannerItem.get(position).getImgPath(),bannerItem.get(position).getMovie(),banner);
         Log.i("tag", "你点了第"+position+"张轮播图");
-
     }
 
 
@@ -205,7 +201,7 @@ public class HomeFragment extends Fragment implements OnBannerListener , Adapter
                     searchData(data,view);
                     break;
                 case R.id.gridView:
-                    gotoMovieDetail(listitem.get(position).getMovieName(),listitem.get(position).getImgPath(),listitem.get(position).getMovie());
+                    gotoMovieDetail(listitem.get(position).getMovieName(),listitem.get(position).getImgPath(),listitem.get(position).getMovie(),view);
                     break;
                 default:
                     break;
@@ -266,14 +262,14 @@ public class HomeFragment extends Fragment implements OnBannerListener , Adapter
         }
     }
 
-    private void gotoMovieDetail(String name,String path,String url){
-        Intent intent = new Intent();
-        intent.setClass(getActivity(),MovieDetailActivity.class);
-        intent.putExtra("NAME",name);
-        intent.putExtra("PATH",path);
-        intent.putExtra("URL",url);
-        getActivity().startActivity(intent);
+    private void gotoMovieDetail(String name,String path,String url,View v){
+        Bundle bundle = new Bundle();
+        bundle.putString("NAME", name);
+        bundle.putString("IMAGE",path);
+        bundle.putString("URL",url);
+        Navigation.findNavController(v).navigate(R.id.action_nav_home_to_movie, bundle);
     }
+
     private void getBannrt(){
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder().url(Constant.BANNER_URL).build();

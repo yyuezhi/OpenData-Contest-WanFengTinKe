@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#BF9FEC</color>
-    <color name="colorPrimaryDark">#BDA2FB</color>
+    <color name="colorPrimary">#B59572</color>
+    <color name="colorPrimaryDark">#8E755A</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="mainActivityGridBackground">#FABA5C</color>
     <color name= "backGroundColour">#FDFCFC</color>

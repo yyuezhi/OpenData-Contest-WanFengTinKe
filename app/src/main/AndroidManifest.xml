@@ -18,9 +18,8 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:theme="@style/AppTheme"
         tools:targetApi="n">
-        <activity android:name=".MovieDetailActivity" />
 
-<!--        <meta-data-->
+        <!--        <meta-data-->
 <!--            android:name="com.google.android.actions"-->
 <!--            android:resource="@xml/actions" />-->
 

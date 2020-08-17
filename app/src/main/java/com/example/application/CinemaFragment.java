@@ -42,6 +42,7 @@ public class CinemaFragment extends Fragment {
 
     String URL_CinemaList = "http://data1.library.sh.cn/shnh/dydata/webapi/architecture/getArchitecture?free%20text=%E4%B8%8A%E6%B5%B7%E5%A4%A7%E6%88%8F%E9%99%A2&key=ac55669606af89333c79296def567d4b48059d4b";
     List<ArrayList<String>> listOfCinema;
+    ArrayList<Integer> imgResource = new ArrayList<>();
 
     //Assign variable
     private TextView cinema_name;
@@ -60,6 +61,16 @@ public class CinemaFragment extends Fragment {
         catch (java.lang.NullPointerException e){
             CINEMA_NAME = 0;
         }
+
+        imgResource.add(R.drawable.daxiyuan);
+        imgResource.add(R.drawable.yingyueting);
+        imgResource.add(R.drawable.renming);
+        imgResource.add(R.drawable.lanxin);
+        imgResource.add(R.drawable.daguangmin);
+        imgResource.add(R.drawable.xinguangyin);
+        imgResource.add(R.drawable.meiqi);
+        imgResource.add(R.drawable.changjiang);
+        imgResource.add(R.drawable.huangpu);
 
     }
 
@@ -103,21 +114,14 @@ public class CinemaFragment extends Fragment {
                                     cinema_details.add(o.getString("movieName")); //10
                                     cinema_details.add(o.getString("personList")); //11
                                     listOfCinema.add(cinema_details);
-//                                    cinema_name.setText(cinema_details.get(1));
-//                                    intro.setText("简介");
-//                                    intro_details.setText(cinema_details.get(4));
-//
-//                                    String url = cinema_details.get(9);
-//                                    if (!url.equalsIgnoreCase(""))
-//                                        Picasso.get().load(url).into(cinema_image);
                                 }
                                 cinema_name.setText(listOfCinema.get(CINEMA_NAME).get(1));
                                 intro.setText("简介");
                                 intro_details.setText(listOfCinema.get(CINEMA_NAME).get(4));
-
-                                String url = listOfCinema.get(CINEMA_NAME).get(9);
-                                if (!url.equalsIgnoreCase(""))
-                                    Picasso.get().load(url).into(cinema_image);
+                                cinema_image.setImageResource(imgResource.get(CINEMA_NAME));
+//                                String url = listOfCinema.get(CINEMA_NAME).get(9);
+//                                if (!url.equalsIgnoreCase(""))
+//                                    Picasso.get().load(url).into(cinema_image);
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }

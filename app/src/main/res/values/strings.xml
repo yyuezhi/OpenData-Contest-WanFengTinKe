@@ -4,9 +4,9 @@
     <string name="intro">简介</string>
     <string name="intro_details">美琪大戏院，MAJESTIC THEATRE，位于上海江宁路66号，解放后，曾改名北京影剧院，1985年初恢复原名，建于民国30年(1941年)，由范文照建筑师设计，二层钢筋混凝土框架结构。建成之时，定名美琪，原是取其“美轮美奂，琪玉无瑕”之意。10月15日开幕之际，被海内外人士誉为“亚洲第一”。戏院共1261个座位。 2018年11月24日，入选第三批中国“20世纪建筑遗产项目”名录。</string>
     <string name="meiqi_text">美琪大剧院</string>
-    <string name="nvabar1">Home</string>
-    <string name="nvabar2">Cinema</string>
-    <string name="nvabar3">Actor</string>
+    <string name="nvabar1">首页</string>
+    <string name="nvabar2">影院</string>
+    <string name="nvabar3">演员</string>
     <string name="title_activity_maps">Map</string>
     <string name="title_home">人文历史</string>
     <string name="title_dashboard">娱乐互动</string>
@@ -17,8 +17,10 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
-    <string name="navbar4">Search</string>
+    <string name="navbar4">搜索</string>
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="title_activity_movie_detail">MovieDetailActivity</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
